@@ -28,7 +28,7 @@ const providers = [
   'adonis-lucid/providers/LucidProvider',
   'adonis-middleware/providers/AppMiddlewareProvider',
   'adonis-auth/providers/AuthManagerProvider',
-  __dirname + '/../providers/FilesystemProvider',
+  'adonis-filesystem/providers/FilesystemProvider',
 ]
 
 /*
@@ -75,7 +75,7 @@ const aliases = {
   Route: 'Adonis/Src/Route',
   Schema: 'Adonis/Src/Schema',
   View: 'Adonis/Src/View',
-  File: 'AdonisFile/Filesystem'
+  File: 'AdonisFilesystem/Filesystem'
 }
 
 /*

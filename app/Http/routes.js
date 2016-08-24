@@ -22,8 +22,21 @@ const Route = use('Route')
 Route.on('/').render('welcome')
 
 Route.get('/file', function * (request, response) {
-  yield File.put('app.json', JSON.stringify({x: 'hey'}, null, 2))
-  const x = yield File.connection('protected').get('app.json', null)
+  yield File.put('app.json', "File contents here")
 
-  response.send('done')
+  const x = yield File.connection('protected').get('app.json')
+
+  response.json(x)
+})
+
+Route.post('/avatar', function * (request, response) {
+  // getting file instance
+  const avatar = request.file('avatar', {
+      maxSize: '2mb',
+      allowedExtensions: ['jpg', 'png', 'jpeg']
+  })
+
+  yield File.upload(avatar.clientName(), avatar)
+
+  response.send('hey')
 })
